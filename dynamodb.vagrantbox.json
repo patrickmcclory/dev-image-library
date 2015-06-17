@@ -89,8 +89,8 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "image-dev/vagrant-dynamodb/install.sh",
-        "image-dev/vagrant-dynamodb/supervisor.vagrant.sh"
+        "image-dev/dynamodb/install.sh",
+        "image-dev/dynamodb/supervisor.vagrant.sh"
         ]
     },
     {
