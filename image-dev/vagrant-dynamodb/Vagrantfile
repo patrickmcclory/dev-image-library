@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.landrush.enabled = true
+  config.landrush.tld = 'vm'
+  config.landrush.guest_redirect_dns = false
+  config.landrush.upstream '8.8.8.8'
+
+  config.vm.define 'dev' do |dev|
+    dev.vm.box = 'ubuntu1404lts'
+    dev.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
+    dev.vm.hostname = 'dynamodb.vagrant.vm'
+    dev.vm.provision 'shell', path: 'install.sh'
+    dev.vm.provision 'shell', path: 'supervisor.vagrant.sh'
+  end
+
+  config.vm.define 'box' do |box|
+    box.vm.box = 'vagrantDynamo'
+    box.vm.box_url = 'https://s3-us-west-2.amazonaws.com/packages.dualspark.com/dev/vagrant/ubuntu1404-dynamodb-local-0.1.0.box'
+    box.vm.hostname = 'prebuilt.vagrant.vm'
+  end
+
+end
