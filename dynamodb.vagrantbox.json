@@ -106,7 +106,7 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "scripts/minimize.sh"
+        "scripts/cleanup.sh"
         ]
     }
   ],
